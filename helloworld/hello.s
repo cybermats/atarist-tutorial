@@ -1,4 +1,5 @@
-	move.l #text,-(sp)	; Address of the string on the stack
+	text
+	move.l #message,-(sp)	; Address of the string on the stack
 	move #$09,-(sp)		; PTR LINE
 	trap #1			; Call GEMDOS
 	addq.l #6,sp		; Correct stack
@@ -11,6 +12,7 @@
 	clr.w -(sp)		; TERM
 	trap #1			; Call GEMDOS
 
-
-
-text:	dc.b 'This is the string to be printed',$0d,$0a,0
+	data
+message:	
+	dc.b 'Hello world',$0d,$0a,0
+	
